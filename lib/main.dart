@@ -5,7 +5,20 @@ void main() => runApp(MaterialApp(home: AgilPoker()));
 
 const double expandedHeight = 550;
 
-var wert = ['0', '0,5', '1', '2', '3', '5', '8', '13', '20', '40', '100', 'start'];
+var wert = [
+  '0',
+  '0,5',
+  '1',
+  '2',
+  '3',
+  '5',
+  '8',
+  '13',
+  '20',
+  '40',
+  '100',
+  'start'
+];
 
 class AgilPoker extends StatelessWidget {
   @override
@@ -72,8 +85,52 @@ class Page extends StatelessWidget {
         shape: AutomaticNotchedShape(
             RoundedRectangleBorder(), StadiumBorder(side: BorderSide())),
         expandedBackColor: Colors.grey[900],
-        expandedBody: Center(
-          child: Text("Hello world!"),
+        expandedBody: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 3,
+          children: <Widget>[
+            
+            RaisedButton(
+          onPressed: () {},
+          child: const Text(
+            'Enabled Button',
+            style: TextStyle(fontSize: 20)
+          ),
+        ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('He\'d have you all unravel at the'),
+              color: Colors.teal[100],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('Heed not the rabble'),
+              color: Colors.teal[200],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('Sound of screams but the'),
+              color: Colors.teal[300],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('Who scream'),
+              color: Colors.teal[400],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('Revolution is coming...'),
+              color: Colors.teal[500],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text('Revolution, they...'),
+              color: Colors.teal[600],
+            ),
+          ],
         ),
         bottomAppBarBody: Padding(
           padding: const EdgeInsets.all(8.0),
