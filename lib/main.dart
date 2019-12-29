@@ -109,7 +109,10 @@ class Page extends State<MyApp> {
           crossAxisCount: 3,
           children: <Widget>[
             RaisedButton(
-              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
               padding: EdgeInsets.all(8),
               onPressed: () {
                 wertIndex = 0;
@@ -118,38 +121,212 @@ class Page extends State<MyApp> {
               },
               child: Text(
                 wert[0],
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('He\'d have you all unravel at the'),
-              color: Colors.teal[100],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 1;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[1],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Heed not the rabble'),
-              color: Colors.teal[200],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 2;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[2],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Sound of screams but the'),
-              color: Colors.teal[300],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 3;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[3],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Who scream'),
-              color: Colors.teal[400],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 4;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[4],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution is coming...'),
-              color: Colors.teal[500],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 5;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[5],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution, they...'),
-              color: Colors.teal[600],
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 6;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[6],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 7;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[7],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 8;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[8],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 9;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[9],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.white)),
+              color: Colors.white,
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 10;
+                showWert();
+                DefaultBottomBarController.of(context).swap();
+              },
+              child: Text(
+                wert[10],
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Monoton-Regular',
+                  color: Colors.black,
+                ),
+              ),
             ),
           ],
         ),
