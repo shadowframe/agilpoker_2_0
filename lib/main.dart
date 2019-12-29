@@ -5,20 +5,9 @@ void main() => runApp(MaterialApp(home: AgilPoker()));
 
 const double expandedHeight = 550;
 
-var wert = [
-  '0',
-  '0,5',
-  '1',
-  '2',
-  '3',
-  '5',
-  '8',
-  '13',
-  '20',
-  '40',
-  '100',
-  'start'
-];
+var wert = ['0', '0,5', '1', '2', '3', '5', '8', '13', '20', '40', '100', ':)'];
+
+var wertIndex = 11;
 
 class AgilPoker extends StatelessWidget {
   @override
@@ -33,6 +22,7 @@ class AgilPoker extends StatelessWidget {
   }
 }
 
+
 class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -46,19 +36,7 @@ class Page extends StatelessWidget {
       //   title: Text("Panel Showcase"),
       //   backgroundColor: Colors.black,
       // ),
-      body: SafeArea(
-        child: Center(
-          child: Text(
-            wert[10],
-            style: TextStyle(
-              fontFamily: 'Monoton-Regular',
-              fontSize: 160.0,
-              color: Colors.white,
-              // fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ),
+      body: AgilNumberWidget(),
 
       // Lets use docked FAB for handling state of sheet
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -92,14 +70,18 @@ class Page extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisCount: 3,
           children: <Widget>[
-            
             RaisedButton(
-          onPressed: () {},
-          child: const Text(
-            'Enabled Button',
-            style: TextStyle(fontSize: 20)
-          ),
-        ),
+              padding: EdgeInsets.all(8),
+              onPressed: () {
+                wertIndex = 0;
+                print(wertIndex);
+                setIndex();
+              },
+              child: Text(
+                wert[0],
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
             Container(
               padding: const EdgeInsets.all(8),
               child: const Text('He\'d have you all unravel at the'),
@@ -159,3 +141,71 @@ class Page extends StatelessWidget {
     );
   }
 }
+
+class AgilNumberWidget extends StatefulWidget {
+  @override
+  AgilNumberWidgetState createState() => AgilNumberWidgetState();
+}
+// #enddocregion FavoriteWidget
+
+// #docregion _FavoriteWidgetState, _FavoriteWidgetState-fields, _FavoriteWidgetState-build
+class AgilNumberWidgetState extends State<AgilNumberWidget> {
+  void setIndex() {
+    setState(() {
+      // questionIndex = questionIndex + 1;
+    });
+    print(wertIndex);
+  }
+
+  // #enddocregion _FavoriteWidgetState-build
+  // bool _isFavorited = true;
+  // int _favoriteCount = 41;
+  // #enddocregion _FavoriteWidgetState-fields
+
+  // #docregion _toggleFavorite
+  // void _toggleFavorite() {
+  //   setState(() {
+  //     if (_isFavorited) {
+  //       _favoriteCount -= 1;
+  //       _isFavorited = false;
+  //     } else {
+  //       _favoriteCount += 1;
+  //       _isFavorited = true;
+  //     }
+  //   });
+  // }
+  // #enddocregion _toggleFavorite
+
+  // #docregion _FavoriteWidgetState-build
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: Text(
+          wert[wertIndex],
+          style: TextStyle(
+            fontFamily: 'Monoton-Regular',
+            fontSize: 160.0,
+            color: Colors.white,
+            // fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+    );
+  }
+  // #docregion _FavoriteWidgetState-fields
+}
+
+// body: SafeArea(
+//         child: Center(
+//           child: Text(
+//             wert[wertIndex],
+//             style: TextStyle(
+//               fontFamily: 'Monoton-Regular',
+//               fontSize: 160.0,
+//               color: Colors.white,
+//               // fontWeight: FontWeight.w400,
+//             ),
+//           ),
+//         ),
+//       ),
