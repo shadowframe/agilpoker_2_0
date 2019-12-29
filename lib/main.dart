@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:expandable_bottom_bar/expandable_bottom_bar.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(MaterialApp(home: AgilPoker()));
 
 const double expandedHeight = 550;
-
-var wert = ['0', '0,5', '1', '2', '3', '5', '8', '13', '20', '40', '100', ':)'];
-
-var wertIndex = 11;
 
 class AgilPoker extends StatelessWidget {
   @override
@@ -16,14 +13,43 @@ class AgilPoker extends StatelessWidget {
       home: DefaultBottomBarController(
         dragLength: expandedHeight,
         snap: true,
-        child: Page(),
+        child: MyApp(),
       ),
     );
   }
 }
 
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return Page();
+  }
+}
 
-class Page extends StatelessWidget {
+class Page extends State<MyApp> {
+  var wert = [
+    '0',
+    '0,5',
+    '1',
+    '2',
+    '3',
+    '5',
+    '8',
+    '13',
+    '20',
+    '40',
+    '100',
+    ':)'
+  ];
+
+  var wertIndex = 11;
+
+  void showWert() {
+    setState(() {
+      // questionIndex = questionIndex + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +62,19 @@ class Page extends StatelessWidget {
       //   title: Text("Panel Showcase"),
       //   backgroundColor: Colors.black,
       // ),
-      body: AgilNumberWidget(),
+      body: SafeArea(
+        child: Center(
+          child: Text(
+            wert[wertIndex],
+            style: TextStyle(
+              fontFamily: 'Monoton-Regular',
+              fontSize: 160.0,
+              color: Colors.white,
+              // fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+      ),
 
       // Lets use docked FAB for handling state of sheet
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -71,11 +109,12 @@ class Page extends StatelessWidget {
           crossAxisCount: 3,
           children: <Widget>[
             RaisedButton(
+              color: Colors.red,
               padding: EdgeInsets.all(8),
               onPressed: () {
                 wertIndex = 0;
-                print(wertIndex);
-                setIndex();
+                showWert();
+                DefaultBottomBarController.of(context).swap();
               },
               child: Text(
                 wert[0],
@@ -141,71 +180,3 @@ class Page extends StatelessWidget {
     );
   }
 }
-
-class AgilNumberWidget extends StatefulWidget {
-  @override
-  AgilNumberWidgetState createState() => AgilNumberWidgetState();
-}
-// #enddocregion FavoriteWidget
-
-// #docregion _FavoriteWidgetState, _FavoriteWidgetState-fields, _FavoriteWidgetState-build
-class AgilNumberWidgetState extends State<AgilNumberWidget> {
-  void setIndex() {
-    setState(() {
-      // questionIndex = questionIndex + 1;
-    });
-    print(wertIndex);
-  }
-
-  // #enddocregion _FavoriteWidgetState-build
-  // bool _isFavorited = true;
-  // int _favoriteCount = 41;
-  // #enddocregion _FavoriteWidgetState-fields
-
-  // #docregion _toggleFavorite
-  // void _toggleFavorite() {
-  //   setState(() {
-  //     if (_isFavorited) {
-  //       _favoriteCount -= 1;
-  //       _isFavorited = false;
-  //     } else {
-  //       _favoriteCount += 1;
-  //       _isFavorited = true;
-  //     }
-  //   });
-  // }
-  // #enddocregion _toggleFavorite
-
-  // #docregion _FavoriteWidgetState-build
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text(
-          wert[wertIndex],
-          style: TextStyle(
-            fontFamily: 'Monoton-Regular',
-            fontSize: 160.0,
-            color: Colors.white,
-            // fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-    );
-  }
-  // #docregion _FavoriteWidgetState-fields
-}
-
-// body: SafeArea(
-//         child: Center(
-//           child: Text(
-//             wert[wertIndex],
-//             style: TextStyle(
-//               fontFamily: 'Monoton-Regular',
-//               fontSize: 160.0,
-//               color: Colors.white,
-//               // fontWeight: FontWeight.w400,
-//             ),
-//           ),
-//         ),
-//       ),
