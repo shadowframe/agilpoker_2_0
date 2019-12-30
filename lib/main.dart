@@ -3,6 +3,7 @@ import 'package:expandable_bottom_bar/expandable_bottom_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 void main() => runApp(MaterialApp(home: AgilPoker()));
 
@@ -345,8 +346,14 @@ class Page extends State<MyApp> {
                   onPressed: () {
                     Flushbar(
                       title: "MIT LICENSE",
-                      message:
-                          copyright,
+                      message: copyright,
+                      icon: Icon(
+                        Icons.copyright,
+                        size: 28,
+                        color: Colors.white,
+                      ),
+                      leftBarIndicatorColor: Colors.white,
+                      backgroundColor: Colors.black,
                       duration: Duration(seconds: 3),
                     )..show(context);
                   },
@@ -357,13 +364,34 @@ class Page extends State<MyApp> {
               ),
               Expanded(
                 child: IconButton(
-                  icon: Icon(Icons.code),
-                  onPressed: () async {
-                    if (await canLaunch(
-                        "https://github.com/shadowframe/agilpoker_2_0")) {
-                      await launch(
-                          "https://github.com/shadowframe/agilpoker_2_0");
-                    }
+                  icon: Icon(Octicons.octoface),
+                  onPressed: () {
+                    Flushbar(
+                      message: 'Der Quellcode dieser Anwendung ist frei',
+                      icon: Icon(
+                        Octicons.gist,
+                        size: 28,
+                        color: Colors.white,
+                      ),
+                      mainButton: FlatButton(
+                        onPressed: () async {
+                          if (await canLaunch(
+                              "https://github.com/shadowframe/agilpoker_2_0")) {
+                            await launch(
+                                "https://github.com/shadowframe/agilpoker_2_0");
+                          }
+                        },
+                        child: Text(
+                          'Quellcode ansehen',
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
+                      leftBarIndicatorColor: Colors.white,
+                      backgroundColor: Colors.black,
+                      duration: Duration(seconds: 3),
+                    )..show(context);
                   },
                 ),
               ),
