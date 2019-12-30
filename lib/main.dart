@@ -4,10 +4,11 @@ import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 void main() => runApp(MaterialApp(home: AgilPoker()));
 
-const double expandedHeight = 550;
+const double expandedHeight = 400;
 
 class AgilPoker extends StatelessWidget {
   @override
@@ -63,10 +64,10 @@ class Page extends State<MyApp> {
       //Set to true for bottom appbar overlap body content
       extendBody: true,
 
-      // appBar: AppBar(
-      //   title: Text("Panel Showcase"),
-      //   backgroundColor: Colors.black,
-      // ),
+      appBar: AppBar(
+        title: Text("Panel Showcase"),
+        backgroundColor: Colors.black,
+      ),
       body: SafeArea(
         child: Center(
           child: Text(
@@ -74,7 +75,7 @@ class Page extends State<MyApp> {
             style: TextStyle(
               fontFamily: 'Monoton-Regular',
               fontSize: 160.0,
-              color: Colors.white,
+              color: Color(0xFFFFD24A),
               // fontWeight: FontWeight.w400,
             ),
           ),
@@ -87,256 +88,266 @@ class Page extends State<MyApp> {
         // Set onVerticalDrag event to drag handlers of controller for swipe effect
         onVerticalDragUpdate: DefaultBottomBarController.of(context).onDrag,
         onVerticalDragEnd: DefaultBottomBarController.of(context).onDragEnd,
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 10.0),
-          child: IconButton(
-            icon: Icon(Octicons.smiley),
-            color: Colors.white,
-            iconSize: 40,
 
-            //Set onPressed event to swap state of bottom bar
-            onPressed: () => DefaultBottomBarController.of(context).swap(),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom:0.0),
+          child: SizedBox(
+            width: 110,
+            height: 110,
+            child: GestureDetector(
+              onTap: () => DefaultBottomBarController.of(context).swap(),
+              child: FlareActor(
+                'assets/bob_button.flr',
+                animation: 'Wave',
+                fit: BoxFit.fitHeight,
+              ),
+            ),
           ),
         ),
       ),
 
       // Actual expandable bottom bar
       bottomNavigationBar: BottomExpandableAppBar(
+        bottomAppBarColor : Color(0xFFFFD24A),
         expandedHeight: expandedHeight,
         horizontalMargin: 2,
         shape: AutomaticNotchedShape(
             RoundedRectangleBorder(), StadiumBorder(side: BorderSide())),
-        expandedBackColor: Colors.grey[900],
-        expandedBody: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 3,
-          children: <Widget>[
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 0;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[0],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+        expandedBackColor: Colors.grey[350],
+        expandedBody: Container(
+          margin: EdgeInsets.only(top: 40.0),
+          child: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 4,
+            children: <Widget>[
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 0;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[0],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 1;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[1],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 1;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[1],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 2;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[2],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 2;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[2],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 3;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[3],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 3;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[3],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 4;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[4],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 4;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[4],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 5;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[5],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 5;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[5],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 6;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[6],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 6;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[6],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 7;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[7],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 7;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[7],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 8;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[8],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 8;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[8],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 9;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[9],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 9;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[9],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
-                  side: BorderSide(color: Colors.white)),
-              color: Colors.white,
-              padding: EdgeInsets.all(8),
-              onPressed: () {
-                wertIndex = 10;
-                showWert();
-                DefaultBottomBarController.of(context).swap();
-              },
-              child: Text(
-                wert[10],
-                style: TextStyle(
-                  fontSize: 40,
-                  fontFamily: 'Monoton-Regular',
-                  color: Colors.black,
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white)),
+                color: Color(0xFF3D9BE2),
+                padding: EdgeInsets.all(8),
+                onPressed: () {
+                  wertIndex = 10;
+                  showWert();
+                  DefaultBottomBarController.of(context).swap();
+                },
+                child: Text(
+                  wert[10],
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: 'Monoton-Regular',
+                    color: Color(0xFFFFD24A),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        bottomAppBarBody: Padding(
+        bottomAppBarBody: 
+        Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -385,7 +396,7 @@ class Page extends State<MyApp> {
                         child: Text(
                           'Quellcode ansehen',
                           style: TextStyle(
-                            color: Colors.red,
+                            color: Color(0xFFFFD24A),
                           ),
                         ),
                       ),
