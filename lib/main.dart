@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:expandable_bottom_bar/expandable_bottom_bar.dart';
 import 'package:flutter/rendering.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flushbar/flushbar.dart';
 
 void main() => runApp(MaterialApp(home: AgilPoker()));
 
@@ -43,6 +45,8 @@ class Page extends State<MyApp> {
   ];
 
   var wertIndex = 11;
+  String copyright =
+      "Copyright 2019 Jan Weber\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the Software), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 
   void showWert() {
     setState(() {
@@ -336,9 +340,16 @@ class Page extends State<MyApp> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Expanded(
-                child: Text(
-                  "Tets",
-                  textAlign: TextAlign.center,
+                child: IconButton(
+                  icon: Icon(Icons.copyright),
+                  onPressed: () {
+                    Flushbar(
+                      title: "MIT LICENSE",
+                      message:
+                          copyright,
+                      duration: Duration(seconds: 3),
+                    )..show(context);
+                  },
                 ),
               ),
               Spacer(
@@ -346,11 +357,14 @@ class Page extends State<MyApp> {
               ),
               Expanded(
                 child: IconButton(
-                  icon: Icon(Icons.ac_unit),
-                  onPressed: () {
-                    print('Hallo');
+                  icon: Icon(Icons.code),
+                  onPressed: () async {
+                    if (await canLaunch(
+                        "https://github.com/shadowframe/agilpoker_2_0")) {
+                      await launch(
+                          "https://github.com/shadowframe/agilpoker_2_0");
+                    }
                   },
-                  
                 ),
               ),
             ],
