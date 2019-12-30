@@ -345,9 +345,12 @@ class Page extends State<MyApp> {
                 flex: 2,
               ),
               Expanded(
-                child: Text(
-                  "Stet",
-                  textAlign: TextAlign.center,
+                child: IconButton(
+                  icon: Icon(Icons.ac_unit),
+                  onPressed: () {
+                    print('Hallo');
+                  },
+                  
                 ),
               ),
             ],
