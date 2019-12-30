@@ -87,15 +87,16 @@ class Page extends State<MyApp> {
         // Set onVerticalDrag event to drag handlers of controller for swipe effect
         onVerticalDragUpdate: DefaultBottomBarController.of(context).onDrag,
         onVerticalDragEnd: DefaultBottomBarController.of(context).onDragEnd,
-        child: FloatingActionButton.extended(
-          icon: Icon(Icons.filter_9_plus),
-          label: Text("wähle"),
-          elevation: 2,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: IconButton(
+            icon: Icon(Octicons.smiley),
+            color: Colors.white,
+            iconSize: 40,
 
-          //Set onPressed event to swap state of bottom bar
-          onPressed: () => DefaultBottomBarController.of(context).swap(),
+            //Set onPressed event to swap state of bottom bar
+            onPressed: () => DefaultBottomBarController.of(context).swap(),
+          ),
         ),
       ),
 
@@ -349,7 +350,7 @@ class Page extends State<MyApp> {
                       message: copyright,
                       icon: Icon(
                         Icons.copyright,
-                        size: 28,
+                        size: 40,
                         color: Colors.white,
                       ),
                       leftBarIndicatorColor: Colors.white,
@@ -370,7 +371,7 @@ class Page extends State<MyApp> {
                       message: 'Der Quellcode dieser Anwendung ist frei',
                       icon: Icon(
                         Octicons.gist,
-                        size: 28,
+                        size: 40,
                         color: Colors.white,
                       ),
                       mainButton: FlatButton(
