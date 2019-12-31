@@ -64,10 +64,10 @@ class Page extends State<MyApp> {
       //Set to true for bottom appbar overlap body content
       extendBody: true,
 
-      appBar: AppBar(
-        title: Text("Panel Showcase"),
-        backgroundColor: Colors.black,
-      ),
+      // appBar: AppBar(
+      //   title: Text('minion'),
+      //   backgroundColor: Colors.black,
+      // ),
       body: SafeArea(
         child: Center(
           child: Text(
